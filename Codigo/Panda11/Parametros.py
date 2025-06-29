@@ -1,2 +1,2 @@
-dias=1
+dias=7
 nombre="Panda11"
