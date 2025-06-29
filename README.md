@@ -70,5 +70,18 @@ Modelo Koala/
   - R²:   0.9537
   - MAPE: 2.38%
 ---
+### Modelo entrenado a 7 día:
+#### Entrenamineto a 7 día:
+![Entrenamiento1](/images/Train4.png)
+![Entrenamiento2](/images/Train5.png)
+![Entrenamiento3](/images/Train6.png) 
+### Predicción a 7 Día
+![Entrenamiento3](/images/Predic2.png) 
+- 📊 MÉTRICAS DEL MODELO (Cierre):
+  - MAE:  1.9140
+  - RMSE: 2.4920
+  - R²:   0.8065
+  - MAPE: 4.50%
+
 
 
