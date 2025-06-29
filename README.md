@@ -22,17 +22,30 @@
 ## 📁 Estructura del proyecto
 
 Modelo Koala/  
-├── Datos/  
-│   ├── Crude Oil WTI Futures Historical Data expandido.csv  
-│   ├── Gpr_por_Dia.csv  
-│   ├── GPR_De_paises_por_dia.csv  
-│   ├── trafico_canales1986_2025.csv  
-│   ├── S&P 500 Futures Historical Data expandido.csv  
-│   ├── US Dollar Index Historical Extendido.csv  
-│   └── Exxon Mobil Stock Price Expandido.csv  
-├── modelo_koala.py  
-├── Parametros.py  
-├── requirements.txt  
+├── Codigo/  
+    ├──Datos/ 
+       ├── Crude Oil WTI Futures Historical Data expandido.csv  
+       ├── Crude Oil WTI Futures Historical Data expandido2.csv  
+       ├── Crude Oil WTI Futures Historical Data Predecir.csv  
+       ├── datos_mensuales_limpio.csv  
+       ├── DollarPredecir27_06.csv 
+       ├── Exxon Mobil Stock Price Expandido.csv
+       ├── Exxon Mobil Stock Price Predecir.csv
+       ├── Gpr_por_Dia.csv
+       ├── GPR_De_paises_por_dia.csv
+       ├── S&P 500 Futures Historical Data expandido.csv
+       ├── trafico_canales1986_2025.csv
+       ├── S&P 500 Futures Historical Data Predecir.csv
+       ├── US Dollar Index Historical Extendido.csv
+       ├── US Dollar Index Historical Predecir.csv
+       ├── WTIPredecir27_06.csv
+       ├── S&P 500Predecir27_06.csv  
+       └── README.md
+    ├── Panda11/  
+        ├── Panda11.py  
+        ├── predecir11.py
+        ├── Parametros.py
+        └── README.md  
 └── README.md  
 
 
