@@ -13,5 +13,5 @@
 #### 3. Run the file **Panda11.py**  
 ![Tutorial2](/images/Tutorial2.png)
 
-#### 4. Run the file **Panda11.py**  
+#### 4. Run the file **predecir11.py**  
 ![Tutorial3](/images/Tutorial3.png)
