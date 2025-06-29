@@ -1,0 +1,2 @@
+Mean Squared Error: 3271.52
+R-squared: nan
