@@ -16,8 +16,6 @@ print("🚀 Iniciando script...")
 
 # 1️⃣ Cargar datos
 precio = pd.read_csv('../Datos/Crude Oil WTI Futures Historical Data expandido.csv', parse_dates=['fecha'])
-gpr = pd.read_csv('../Datos/Gpr_por_Dia.csv', parse_dates=['fecha'])
-mensual = pd.read_csv('../Datos/GPR_De_paises_por_dia.csv', parse_dates=['Date'])  
 barcos = pd.read_csv('../Datos/trafico_canales1986_2025.csv', parse_dates=['Date'])
 sp500=pd.read_csv('../Datos/S&P 500 Futures Historical Data expandido.csv', parse_dates=['Date'])
 sp500.rename(columns={'Date': 'fecha', 'Price': 'precioSp', 'Open': 'OpenSp','High':'HighSp','Low':'LowSp','Vol.':'Vol.SP','Change':'ChangeSP'}, inplace=True)
@@ -31,24 +29,21 @@ empresa_Petroleo['fecha'] = empresa_Petroleo['fecha'].dt.normalize()
 empresa_Petroleo.rename(columns={'Date': 'fecha', 'Price': 'PriceEP', 'Open': 'OpenEP','High':'HighEP','Low':'LowEP','Vol.':'Vol.EP','Change':'ChangeEP'}, inplace=True)
 
 # 2️⃣ Preparar fechas
-mensual.rename(columns={'Date': 'fecha'},inplace=True)
+
 barcos.rename(columns={'Date': 'fecha', 'Panama': 'barcos_panamá', 'Suez': 'barcos_suez'}, inplace=True)
 barcos['fecha'] = barcos['fecha'].dt.normalize()
 sp500['fecha'] = sp500['fecha'].dt.normalize()
 precio['fecha'] = precio['fecha'].dt.normalize()
-gpr['fecha'] = gpr['fecha'].dt.normalize()
-mensual['fecha'] = mensual['fecha'].dt.normalize()
 
 # 🔄 Expandir mensual a diario
 fechas_diarias = pd.DataFrame({'fecha': pd.date_range(start=precio['fecha'].min(), end=precio['fecha'].max(), freq='D')})
-mensual_diario = fechas_diarias.merge(mensual, on='fecha', how='left').ffill().infer_objects()
+
 barcos_diario = fechas_diarias.merge(barcos, on='fecha', how='left').ffill().infer_objects()
 Sp500_diario= fechas_diarias.merge(sp500, on='fecha', how='left').ffill().infer_objects()
 dolar_diario=fechas_diarias.merge(dolar, on='fecha', how='left').ffill().infer_objects()
 EP_diario=fechas_diarias.merge(empresa_Petroleo, on='fecha', how='left').ffill().infer_objects()
 # 3️⃣ Merge total
-df = precio.merge(gpr, on='fecha').sort_values('fecha')
-df = df.merge(mensual_diario, on='fecha', how='left')
+df = precio.sort_values('fecha')
 df = df.merge(barcos_diario, on='fecha', how='left')
 df = df.merge(Sp500_diario, on='fecha', how='left')
 df= df.merge(dolar_diario, on='fecha', how='left')
@@ -57,8 +52,7 @@ df= df.merge(EP_diario, on='fecha', how='left')
 print(f"✅ Filas después del merge completo: {df.shape[0]}")
 
 # 4️⃣ Variables adicionales
-df['GPRD'] = pd.to_numeric(df['GPRD'], errors='coerce')
-df['GPRD_Delta'] = df['GPRD'] - df['GPRD'].shift(3)
+
 
 # Media del mes pasado
 precio['mes'] = precio['fecha'].dt.to_period('M')
@@ -93,37 +87,26 @@ df['media_sp'] = df['PrecioEnteroSP'].mean()
 df['desv_sp'] = df['PrecioEnteroSP'].std()
 df['skew_sp'] = df['PrecioEnteroSP'].skew()
 df['kurt_sp'] = df['PrecioEnteroSP'].kurt()
-df['GPRDCambio'] = df['GPRD'].pct_change()
-df['GPRD_extremo'] = (df['GPRDCambio'].abs() > 0.1).astype(int)
 df['momentum_EP'] = df['PriceEP'] - df['PriceEP'].shift(4)
 df['momentum_sp'] = df['PrecioEnteroSP'] - df['PrecioEnteroSP'].shift(30)
 df['momentum_dolar'] = df['precioDolar'] - df['precioDolar'].shift(10) #Dinámicas muy interesantes de la tendencia del dolar 10 dias en el precio de dentro de 7 días
 df['Vol_WTI'] = df['Open'].pct_change().rolling(window=8).std()
 umbral_vol_wti = df['Vol_WTI'].quantile(0.97)
 df['Vol_WTI_extrema'] = (df['Vol_WTI'] > umbral_vol_wti).astype(int)
-df['Vol_SP'] = df['PrecioEnteroSP'].pct_change().rolling(window=5).std()
-umbral_vol_sp = df['Vol_SP'].quantile(0.9)
-df['Vol_SP_extrema'] = (df['Vol_SP'] > umbral_vol_sp).astype(int)
+#Experimentos
+df['media_Dolar'] = df['precioDolar'].mean()
+df['desv_Dolar'] = df['precioDolar'].std()
+df['skew_Dolar'] = df['precioDolar'].skew()
 
-#Experimentos 
+
+
+
 
 
 df = df.dropna(subset=['precio_objetivo'])
 
-# 6️⃣ Conversión de tipos
-cols_obj = ['GPRD', 'GPRD_ACT', 'GPRD_THREAT', 'GPRD_MA30', 'GPRD_MA7']
-for col in cols_obj:
-    if col in df.columns:
-        try:
-            df[col] = pd.to_numeric(df[col], errors='raise')
-        except:
-            df[col] = df[col].astype('category')
 
-# Mensuales
-columnas_mensuales = ['GPRC_EGY', 'GPRC_ISR', 'GPRC_SAU', 'GPRC_USA']
-for col in columnas_mensuales:
-    if col in df.columns:
-        df[col] = pd.to_numeric(df[col], errors='coerce')
+
 
 # Object restantes
 cols_object = df.select_dtypes(include='object').columns
@@ -141,10 +124,10 @@ for col in ['barcos_suez', 'barcos_panamá']:
         df[col] = pd.to_numeric(df[col], errors='coerce')
 
 # 7️⃣ Features y target
-X = df.drop(columns=['fecha','PrecioEnteroSP', 'Vol.EP','GPRDCambio','precio_objetivo','precioDolar', 
-                     'HighDolar','LowDolar','OpenDolar','ChangeDolar','Price','OpenD','PriceD','precioSp','OpenSp','HighSp',
+X = df.drop(columns=['fecha','PrecioEnteroSP', 'Vol.EP','precio_objetivo','precioDolar', 
+                     'HighDolar','LowDolar','OpenDolar','ChangeDolar','Open','OpenD','PriceD','precioSp','OpenSp','HighSp',
                      'HighD','LowSp','LowD',
-                     'Vol.SP','PriceEP','OpenEP','HighEP','ChangeEP','LowEP','DAY','Vol_WTI','Vol_SP'])
+                     'Vol.SP','PriceEP','OpenEP','HighEP','ChangeEP','LowEP','Vol_WTI'])
 y = df['precio_objetivo']
 print(df.columns.tolist())
 # 8️⃣ Train-test split
