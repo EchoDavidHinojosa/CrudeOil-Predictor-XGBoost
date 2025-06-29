@@ -20,10 +20,11 @@
 ---
 
 ## 📁 Estructura del proyecto
+
 WTI-Forecaster-XDays/
-├── main.py # Script principal de procesamiento, entrenamiento y evaluación
-├── Parametros.py # Archivo de configuración (nombre del modelo, días de predicción)
-├── Datos/ # Archivos de entrada (.csv)
-├── Modelos/ # Carpeta sugerida para guardar los modelos entrenados
-├── README.md # Documentación del proyecto
-└── requirements.txt # Requisitos del entorno
+├── Datos/                      # Archivos CSV con datos históricos y macroeconómicos
+├── modelo_koala.py             # Script principal con el pipeline de entrenamiento y evaluación
+├── Parametros.py               # Archivo de configuración con parámetros globales
+├── requirements.txt            # Dependencias de Python
+└── README.md                   # Documentación del proyecto
+
