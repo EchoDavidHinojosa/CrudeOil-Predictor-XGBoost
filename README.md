@@ -56,8 +56,19 @@ Modelo Koala/
 ---
 ## Resultados:
 
-### Predicción a 1 día:
 
--Entrenamiento:
-  
+### Modelo entrenado a 1 día:
+#### Entrenamineto a 1 día:
+![Entrenamiento1](/images/Train1.png)
+![Entrenamiento2](/images/Train2.png)
+![Entrenamiento3](/images/Train3.png) 
+### Predicción a 1 Día
+![Entrenamiento3](/images/Predic1.png) 
+- 📊 MÉTRICAS DEL MODELO (Cierre):
+  - MAE:  0.9680
+  - RMSE: 1.2303
+  - R²:   0.9537
+  - MAPE: 2.38%
+---
+
 
