@@ -21,10 +21,18 @@
 
 ## 📁 Estructura del proyecto
 
-WTI-Forecaster-XDays/
-├── Datos/                      # Archivos CSV con datos históricos y macroeconómicos
-├── modelo_koala.py             # Script principal con el pipeline de entrenamiento y evaluación
-├── Parametros.py               # Archivo de configuración con parámetros globales
-├── requirements.txt            # Dependencias de Python
-└── README.md                   # Documentación del proyecto
+Modelo Koala/  
+├── Datos/  
+│   ├── Crude Oil WTI Futures Historical Data expandido.csv  
+│   ├── Gpr_por_Dia.csv  
+│   ├── GPR_De_paises_por_dia.csv  
+│   ├── trafico_canales1986_2025.csv  
+│   ├── S&P 500 Futures Historical Data expandido.csv  
+│   ├── US Dollar Index Historical Extendido.csv  
+│   └── Exxon Mobil Stock Price Expandido.csv  
+├── modelo_koala.py  
+├── Parametros.py  
+├── requirements.txt  
+└── README.md  
+
 
