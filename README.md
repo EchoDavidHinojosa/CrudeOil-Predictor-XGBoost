@@ -7,14 +7,19 @@
 ## 🚀 Características principales
 
 - 🔮 Predicción del precio futuro del WTI con diferentes horizontes de tiempo (`X` días).
+  
 - 📊 Integración de múltiples fuentes de datos:
+  
   - Precios históricos del WTI
   - S&P 500 y Dólar estadounidense
   - GPR (Geopolitical Risk Index)
   - Tráfico en canales marítimos (Suez y Panamá)
   - Precio de acciones del sector petrolero (Exxon Mobil)
+    
 - ⚙️ Entrenamiento con `XGBoost` acelerado por GPU.
+  
 - 🧠 Generación de variables avanzadas: momentum, volatilidad, eventos extremos, medias móviles, etc.
+  
 - 📈 Visualización de resultados y evaluación del rendimiento con métricas clave.
 
 ---
@@ -48,4 +53,11 @@ Modelo Koala/
   │ │  └── README.md  
   └── README.md  
 
+---
+## Resultados:
+
+### Predicción a 1 día:
+
+-Entrenamiento:
+  
 
