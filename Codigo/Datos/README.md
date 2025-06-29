@@ -1,21 +1,20 @@
 # CrudeOil-Predictor-XGBoost
 
-## Datos
-##### En este proyecto he ido utilizando diversos datos para entrenar al modelo,inicialmente utilicé únicamente un histórico del WTI crude oil y el gpr,aunque poco a poco fuí introduciendo nuevos y eliminando datos que parecían tener cierta correlación con el precio del WTI crude oil con la  intención de mejorar el modelo.
+## Data
+##### In this project, I progressively used various data sources to train the model. Initially, I used only the historical WTI Crude Oil prices and the GPR, but gradually added and removed variables that appeared to correlate with the WTI price in an attempt to improve the model.
 ---
 
-## 🚀 Input principales
+## 🚀 Main Inputs
 
-- Precio histórico del WTI:
-  - Variables directas
+- Historical WTI Price:
+  - Direct variables:
     - Open
     - Low
     - High
     - Vol.
     - Change
       
-  - Variables indirectas
-    
+  - Indirect variables:
     - Pricelag1
     - Price_lag2
     - Pendiente
@@ -30,43 +29,38 @@
     - evento_extremo
     - Vol_WTI_extrema
       
-- Precio histórico del S&P500
-  
-  -  Variables directas
-      - N/A
+- Historical S&P500 Price:
+  - Direct variables:
+    - N/A
         
-  - Variables indirectas
+  - Indirect variables:
     - media_sp
     - desv_sp
     - skew_sp
     - kurt_sp
     - momentum_sp
-- Precio histórico del dolar
-  
-  - Variables directas
+
+- Historical Dollar Index:
+  - Direct variables:
     - ChangeDolar
       
-  - Variables indirectas
+  - Indirect variables:
     - momentum_dolar
     - media_Dolar
     - desv_Dolar
     - skew_Dolar
       
-- Barcos por Panamá y Suez
-  - Variables directas
+- Ships through Panama and Suez:
+  - Direct variables:
     - barcos_panamá
     - barcos_suez
-  - Variables indirectas
-      - N/A
-- Predio Histórico de Exxon Mobil Stock
   
-  - Variables directas
+  - Indirect variables:
+    - N/A
+
+- Historical Price of Exxon Mobil Stock:
+  - Direct variables:
     - N/A
       
-  - Variables indirectas
+  - Indirect variables:
     - momentum_EP
-      
-
----
-
-
