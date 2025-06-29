@@ -1,30 +1,30 @@
 # CrudeOil-Predictor-XGBoost
 
-**WTI-Forecaster-XDays** es un proyecto de machine learning diseñado para predecir el precio futuro del petróleo WTI (West Texas Intermediate) a *X días vista* aunque optimizado para 1D o 7D, utilizando modelos de aprendizaje automático optimizados con XGBoost y datos económicos, financieros y geopolíticos.
+**WTI-Forecaster-XDays** is a machine learning project designed to predict the future price of WTI crude oil (West Texas Intermediate) *X days ahead*, optimized for 1D or 7D, using machine learning models boosted by XGBoost and economic, financial, and geopolitical data.
 
 ---
 
-## 🚀 Características principales
+## 🚀 Main Features
 
-- 🔮 Predicción del precio futuro del WTI con diferentes horizontes de tiempo (`X` días).
+- 🔮 Future price prediction of WTI with different time horizons (`X` days).
   
-- 📊 Integración de múltiples fuentes de datos:
+- 📊 Integration of multiple data sources:
   
-  - Precios históricos del WTI
-  - S&P 500 y Dólar estadounidense
-  - GPR (Geopolitical Risk Index)
-  - Tráfico en canales marítimos (Suez y Panamá)
-  - Precio de acciones del sector petrolero (Exxon Mobil)
+  - Historical prices of WTI  
+  - S&P 500 and US Dollar  
+  - GPR (Geopolitical Risk Index)  
+  - Maritime traffic through Suez and Panama canals  
+  - Stock prices of the oil sector (Exxon Mobil)  
     
-- ⚙️ Entrenamiento con `XGBoost` acelerado por GPU.
+- ⚙️ Training with GPU-accelerated `XGBoost`.
   
-- 🧠 Generación de variables avanzadas: momentum, volatilidad, eventos extremos, medias móviles, etc.
+- 🧠 Generation of advanced features: momentum, volatility, extreme events, moving averages, etc.
   
-- 📈 Visualización de resultados y evaluación del rendimiento con métricas clave.
+- 📈 Visualization of results and performance evaluation with key metrics.
 
 ---
 
-## 📁 Estructura del proyecto
+## 📁 Project Structure
 
 Modelo Koala/  
   ├── Codigo/  
@@ -54,34 +54,39 @@ Modelo Koala/
   └── README.md  
 
 ---
-## Resultados:
 
+## Results
 
-### Modelo entrenado a 1 día:
-#### Entrenamineto a 1 día:
-![Entrenamiento1](/images/Train1.png)
-![Entrenamiento2](/images/Train2.png)
-![Entrenamiento3](/images/Train3.png) 
-### Predicción a 1 Día
-![Entrenamiento3](/images/Predic1.png) 
-- 📊 MÉTRICAS DEL MODELO (Cierre):
-  - MAE:  0.9680
-  - RMSE: 1.2303
-  - R²:   0.9537
-  - MAPE: 2.38%
+### Model trained for 1 day:
+#### Training at 1 day:
+![Training1](/images/Train1.png)  
+![Training2](/images/Train2.png)  
+![Training3](/images/Train3.png)  
+
+### Prediction at 1 Day
+![Prediction1](/images/Predic1.png)  
+
+- 📊 MODEL METRICS (Close):  
+  - MAE:  0.9680  
+  - RMSE: 1.2303  
+  - R²:   0.9537  
+  - MAPE: 2.38%  
+
 ---
-### Modelo entrenado a 7 día:
-#### Entrenamineto a 7 día:
-![Entrenamiento1](/images/Train4.png)
-![Entrenamiento2](/images/Train5.png)
-![Entrenamiento3](/images/Train6.png) 
-### Predicción a 7 Día
-![Entrenamiento3](/images/Predic2.png) 
-- 📊 MÉTRICAS DEL MODELO (Cierre):
-  - MAE:  1.9140
-  - RMSE: 2.4920
-  - R²:   0.8065
-  - MAPE: 4.50%
 
+### Model trained for 7 days:
+#### Training at 7 days:
+![Training4](/images/Train4.png)  
+![Training5](/images/Train5.png)  
+![Training6](/images/Train6.png)  
+
+### Prediction at 7 Days
+![Prediction2](/images/Predic2.png)  
+
+- 📊 MODEL METRICS (Close):  
+  - MAE:  1.9140  
+  - RMSE: 2.4920  
+  - R²:   0.8065  
+  - MAPE: 4.50%  
 
 
