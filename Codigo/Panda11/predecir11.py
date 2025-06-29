@@ -126,7 +126,8 @@ df_nuevo['Price_Media_Mes_Pasado'] = df_nuevo['Price_Media_Mes_Pasado'].bfill()
 
 
 # Excluir columnas irrelevantes y target 'Price' de features
-X_nuevo = df_nuevo.drop(columns=['fecha','PrecioEnteroSP', 'Vol.EP','precio_objetivo','precioDolar', 'HighDolar','LowDolar','OpenDolar','Open','OpenD','PriceD','precioSp','OpenSp','HighSp','HighD','LowSp','LowD',
+X_nuevo = df_nuevo.drop(columns=['fecha','PrecioEnteroSP', 'Vol.EP','precio_objetivo','precioDolar', 'HighDolar','LowDolar','OpenDolar','Open','OpenD','PriceD',
+                                 'precioSp','OpenSp','HighSp','HighD','LowSp','LowD',
                      'Vol.SP','PriceEP','OpenEP','HighEP','ChangeEP','LowEP','Vol_WTI'])
 
 print(f"📌 Features usadas en la predicción: {list(X_nuevo.columns)}")
@@ -135,7 +136,12 @@ print(f"📌 Features usadas en la predicción: {list(X_nuevo.columns)}")
 modelo = xgb.Booster()
 modelo.load_model(Parametros.nombre + str(Parametros.dias) + "Dias.json")
 # Orden correcto esperado por el modelo
-orden_columnas_modelo = ['Price', 'High', 'Low', 'Vol.', 'barcos_panamá', 'barcos_suez', 'Change ', 'Price_Media_Mes_Pasado', 'Price_lag1', 'Price_lag2', 'Pendiente', 'Alto-Bajo', 'Bajo-Alto', 'Price_lag3', 'media_col1', 'desv_col1', 'skew_col1', 'kurt_col1', 'cambio_pct', 'evento_extremo', 'media_sp', 'desv_sp', 'skew_sp', 'kurt_sp', 'momentum_EP', 'momentum_sp', 'momentum_dolar', 'Vol_WTI_extrema', 'media_Dolar', 'desv_Dolar', 'skew_Dolar']
+orden_columnas_modelo = ['Price', 'High', 'Low', 'Vol.', 'barcos_panamá', 'barcos_suez', 'Change ', 
+                         'Price_Media_Mes_Pasado', 'Price_lag1', 'Price_lag2', 'Pendiente', 'Alto-Bajo',
+                           'Bajo-Alto', 'Price_lag3', 'media_col1', 'desv_col1', 'skew_col1', 'kurt_col1',
+                             'cambio_pct', 'evento_extremo', 'media_sp', 'desv_sp', 'skew_sp', 'kurt_sp',
+                               'momentum_EP', 'momentum_sp', 'momentum_dolar', 'Vol_WTI_extrema', 'media_Dolar',
+                                 'desv_Dolar', 'skew_Dolar']
  
 
 #['Open', 'High', 'Low', 'Vol.', 'DAY', 'N10D', 'GPRD', 'GPRD_ACT', 'GPRD_THREAT', 'GPRD_MA30', 'GPRD_MA7', 'event', 'GPRC_CHN', 'GPRC_EGY', 'GPRC_ISR', 'GPRC_RUS', 'GPRC_SAU', 'GPRC_USA', 'GPRC_VEN', 'barcos_panamá', 'barcos_suez', 'precioSp', 'PriceD', 'OpenSp', 'OpenD', 'HighSp', 'HighD', 'LowSp', 'LowD', 'Vol.SP', 'Change ', 'GPRD_Delta', 'Price_Media_Mes_Pasado', 'Price_lag1', 'Price_lag2', 'Pendiente', 'Alto-Bajo', 'Bajo-Alto', 'Price_lag3', 'media_col1', 'desv_col1', 'skew_col1', 'kurt_col1', 'cambio_pct', 'evento_extremo', 'PrecioEnteroSP', 'OpenEnteroSP', 'HighEnteroSP', 'LowEnteroSP'] 
