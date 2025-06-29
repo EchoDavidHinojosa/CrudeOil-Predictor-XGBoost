@@ -20,4 +20,10 @@
 ---
 
 ## 📁 Estructura del proyecto
-
+WTI-Forecaster-XDays/
+├── main.py # Script principal de procesamiento, entrenamiento y evaluación
+├── Parametros.py # Archivo de configuración (nombre del modelo, días de predicción)
+├── Datos/ # Archivos de entrada (.csv)
+├── Modelos/ # Carpeta sugerida para guardar los modelos entrenados
+├── README.md # Documentación del proyecto
+└── requirements.txt # Requisitos del entorno
