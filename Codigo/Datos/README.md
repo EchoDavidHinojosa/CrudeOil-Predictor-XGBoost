@@ -1,51 +1,72 @@
 # CrudeOil-Predictor-XGBoost
 
-**WTI-Forecaster-XDays** es un proyecto de machine learning diseñado para predecir el precio futuro del petróleo WTI (West Texas Intermediate) a *X días vista*, utilizando modelos de aprendizaje automático optimizados con XGBoost y datos económicos, financieros y geopolíticos.
-
+## Datos
+##### En este proyecto he ido utilizando diversos datos para entrenar al modelo,inicialmente utilicé únicamente un histórico del WTI crude oil y el gpr,aunque poco a poco fuí introduciendo nuevos y eliminando datos que parecían tener cierta correlación con el precio del WTI crude oil con la  intención de mejorar el modelo.
 ---
 
-## 🚀 Características principales
+## 🚀 Input principales
 
-- 🔮 Predicción del precio futuro del WTI con diferentes horizontes de tiempo (`X` días).
-- 📊 Integración de múltiples fuentes de datos:
-  - Precios históricos del WTI
-  - S&P 500 y Dólar estadounidense
-  - GPR (Geopolitical Risk Index)
-  - Tráfico en canales marítimos (Suez y Panamá)
-  - Precio de acciones del sector petrolero (Exxon Mobil)
-- ⚙️ Entrenamiento con `XGBoost` acelerado por GPU.
-- 🧠 Generación de variables avanzadas: momentum, volatilidad, eventos extremos, medias móviles, etc.
-- 📈 Visualización de resultados y evaluación del rendimiento con métricas clave.
+- Precio histórico del WTI:
+  - Variables directas
+    - Open
+    - Low
+    - High
+    - Vol.
+    - Change
+      
+  - Variables indirectas
+    
+    - Pricelag1
+    - Price_lag2
+    - Pendiente
+    - Alto-Bajo
+    - Bajo-Alto
+    - Price_lag3
+    - media_col1
+    - desv_col1
+    - skew_col1
+    - kurt_col1
+    - cambio_pct
+    - evento_extremo
+    - Vol_WTI_extrema
+      
+- Precio histórico del S&P500
+  
+  -  Variables directas
+      - N/A
+        
+  - Variables indirectas
+    - media_sp
+    - desv_sp
+    - skew_sp
+    - kurt_sp
+    - momentum_sp
+- Precio histórico del dolar
+  
+  - Variables directas
+    - ChangeDolar
+      
+  - Variables indirectas
+    - momentum_dolar
+    - media_Dolar
+    - desv_Dolar
+    - skew_Dolar
+      
+- Barcos por Panamá y Suez
+  - Variables directas
+    - barcos_panamá
+    - barcos_suez
+  - Variables indirectas
+      - N/A
+- Predio Histórico de Exxon Mobil Stock
+  
+  - Variables directas
+    - N/A
+      
+  - Variables indirectas
+    - momentum_EP
+      
 
 ---
-
-## 📁 Estructura del proyecto
-
-Modelo Koala/  
-├── Codigo/  
-    ├──Datos/ 
-       ├── Crude Oil WTI Futures Historical Data expandido.csv  
-       ├── Crude Oil WTI Futures Historical Data expandido2.csv  
-       ├── Crude Oil WTI Futures Historical Data Predecir.csv  
-       ├── datos_mensuales_limpio.csv  
-       ├── DollarPredecir27_06.csv 
-       ├── Exxon Mobil Stock Price Expandido.csv
-       ├── Exxon Mobil Stock Price Predecir.csv
-       ├── Gpr_por_Dia.csv
-       ├── GPR_De_paises_por_dia.csv
-       ├── S&P 500 Futures Historical Data expandido.csv
-       ├── trafico_canales1986_2025.csv
-       ├── S&P 500 Futures Historical Data Predecir.csv
-       ├── US Dollar Index Historical Extendido.csv
-       ├── US Dollar Index Historical Predecir.csv
-       ├── WTIPredecir27_06.csv
-       ├── S&P 500Predecir27_06.csv  
-       └── README.md
-    ├── Panda11/  
-        ├── Panda11.py  
-        ├── predecir11.py
-        ├── Parametros.py
-        └── README.md  
-└── README.md  
 
 
