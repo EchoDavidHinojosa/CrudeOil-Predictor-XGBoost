@@ -46,8 +46,8 @@ Modelo Koala/
   │ │  ├──  WTIPredecir27_06.csv  
   │ │  ├── S&P 500Predecir27_06.csv    
   │ │  └── README.md  
-  │ ├── Panda11/  
-  │ │  ├── Panda11.py    
+  │ ├── Koala11/  
+  │ │  ├── Koala11.py    
   │ │  ├── predecir11.py  
   │ │  ├── Parametros.py  
   │ │  └── README.md  
